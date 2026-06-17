@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resolvedor Algébrico</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:800px;margin:40px auto;padding:20px}
+input,button{padding:10px;font-size:16px}
+#resultado{margin-top:20px;font-weight:bold}
+</style>
+</head>
+<body>
+<h1>Resolvedor de Contas Algébricas</h1>
+<p>Digite uma expressão usando x. Ex.: 2*x+3</p>
+<input id="expr" size="40" placeholder="2*x+3">
+<input id="xval" type="number" placeholder="Valor de x">
+<button onclick="resolver()">Resolver</button>
+<div id="resultado"></div>
+<script>
+function resolver(){
+  const expr=document.getElementById('expr').value;
+  const x=Number(document.getElementById('xval').value);
+  try{
+    const f=new Function('x','return '+expr);
+    document.getElementById('resultado').innerText='Resultado: '+f(x);
+  }catch(e){
+    document.getElementById('resultado').innerText='Expressão inválida.';
+  }
+}
+</script>
+</body>
+</html>
